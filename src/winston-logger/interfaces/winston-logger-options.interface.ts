@@ -5,10 +5,12 @@ export interface WinstonLoggerModuleOptions {
   level: string;
   format?: Logform.Format;
   transports?: transport | transport[];
+  isGlobal?: boolean;
 }
 
 export interface WinstonLoggerModuleAsyncOptions
   extends Pick<ModuleMetadata, 'imports'> {
+  isGlobal?: boolean;
   useFactory?: (
     ...args: any[]
   ) => Promise<WinstonLoggerModuleOptions> | WinstonLoggerModuleOptions;
