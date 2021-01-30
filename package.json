@@ -1,6 +1,6 @@
 {
   "name": "@ccmos/nestjs-winston-logger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "author": "mosluce@gmail.com",
   "main": "dist/main.js",
