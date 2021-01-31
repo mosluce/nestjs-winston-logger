@@ -13,9 +13,9 @@ export class WinstonLoggerService {
     private options: WinstonLoggerModuleOptions,
   ) {
     this.logger = winston.createLogger({
-      level: options.level,
-      format: options.format || winston.format.json(),
-      transports: options.transports || [new winston.transports.Console()],
+      level: this.options.level,
+      format: this.options.format || winston.format.json(),
+      transports: this.options.transports || [new winston.transports.Console()],
     });
   }
 

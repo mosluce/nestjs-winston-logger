@@ -2,7 +2,7 @@ import { ModuleMetadata } from '@nestjs/common';
 import { Logform, transport } from 'winston';
 
 export interface WinstonLoggerModuleOptions {
-  level: string;
+  level: 'silly' | 'debug' | 'verbose' | 'info' | 'warn' | 'error';
   format?: Logform.Format;
   transports?: transport | transport[];
   isGlobal?: boolean;
