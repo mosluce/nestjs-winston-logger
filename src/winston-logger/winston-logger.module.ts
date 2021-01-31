@@ -9,13 +9,13 @@ import { WinstonLoggerService } from './winston-logger.service';
 @Module({})
 export class WinstonLoggerModule {
   static forRoot(options: WinstonLoggerModuleOptions): DynamicModule {
-    const { isGlobal, ...useExisting } = options;
+    const { isGlobal, ...useValue } = options;
 
     return {
       module: WinstonLoggerModule,
       global: isGlobal,
       providers: [
-        { provide: WINSTON_LOGGER_MODULE_OPTIONS, useExisting },
+        { provide: WINSTON_LOGGER_MODULE_OPTIONS, useValue },
         WinstonLoggerService,
       ],
       exports: [WinstonLoggerService],
