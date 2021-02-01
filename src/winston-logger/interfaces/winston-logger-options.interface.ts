@@ -1,10 +1,7 @@
 import { ModuleMetadata } from '@nestjs/common';
-import { Logform, transport } from 'winston';
+import { LoggerOptions } from 'winston';
 
-export interface WinstonLoggerModuleOptions {
-  level: 'silly' | 'debug' | 'verbose' | 'info' | 'warn' | 'error';
-  format?: Logform.Format;
-  transports?: transport | transport[];
+export interface WinstonLoggerModuleOptions extends LoggerOptions {
   isGlobal?: boolean;
 }
 

@@ -12,10 +12,13 @@ export class WinstonLoggerService {
     @Inject(WINSTON_LOGGER_MODULE_OPTIONS)
     private options: WinstonLoggerModuleOptions,
   ) {
+    const { level, format, transports, ...opts } = this.options;
+
     this.logger = winston.createLogger({
-      level: this.options.level,
-      format: this.options.format || winston.format.json(),
-      transports: this.options.transports || [new winston.transports.Console()],
+      level: level || 'info',
+      format: format || winston.format.json(),
+      transports: transports || [new winston.transports.Console()],
+      ...opts,
     });
   }
 
