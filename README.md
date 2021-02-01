@@ -24,49 +24,47 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[winstonjs](https://github.com/winstonjs/winston) module for [Nest](https://github.com/nestjs/nest).
 
 ## Installation
 
 ```bash
-$ npm install
+$ npm install @ccmos/nestjs-winston-logger
 ```
 
-## Running the app
+## Quick Start
 
-```bash
-# development
-$ npm run start
+```js
+// import
+import { Module } from '@nestjs/common';
+import { WinstonLoggerModule } from '@ccmos/nestjs-winston-logger';
 
-# watch mode
-$ npm run start:dev
+@Module({
+  imports: [
+    WinstonLoggerModule.forRoot({
+      level: 'debug'
+    }),
+  ],
+})
+export class AppModule {}
 
-# production mode
-$ npm run start:prod
+// service
+import { Injectable } from '@nestjs/common';
+import { WinstonLoggerService } from '@ccmos/nestjs-winston-logger';
+
+@Injectable()
+export class MyService {
+  constructor(
+    private logger: WinstonLoggerService,
+  ) {
+    this.logger.setContext(MyService.name);
+  }
+
+  helloWorld() {
+    this.logger.info('hello-world.info', { foo: 'bar' });
+  }
+}
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
